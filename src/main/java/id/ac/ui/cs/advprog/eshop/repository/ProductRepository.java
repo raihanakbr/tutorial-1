@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Repository
 public class ProductRepository {
@@ -26,7 +27,7 @@ public class ProductRepository {
                 return product;
             }
         }
-        return null;
+        throw new NoSuchElementException("Product not found with ID: " + productId);
     }
 
     public Product edit(Product editedProduct) {
