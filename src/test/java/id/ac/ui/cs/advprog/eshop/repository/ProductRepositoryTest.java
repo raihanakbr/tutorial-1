@@ -99,4 +99,37 @@ class ProductRepositoryTest {
             productRepository.edit(editedProduct);
         });
     }
+
+    @Test
+    void testDeleteProduct() {
+        Product product = new Product();
+        product.setProductId("3f90c1db-afea-4a03-8dae-66f40e06f715");
+        product.setProductName("Sampo Cap Agus");
+        product.setProductQuantity(69);
+        productRepository.create(product);
+
+        Product deletedProduct = productRepository.deleteById("3f90c1db-afea-4a03-8dae-66f40e06f715");
+
+        // Verify that the deleted product is returned correctly
+        assertNotNull(deletedProduct);
+        assertEquals("3f90c1db-afea-4a03-8dae-66f40e06f715", deletedProduct.getProductId());
+
+        assertThrows(NoSuchElementException.class, () -> {
+            productRepository.findById("3f90c1db-afea-4a03-8dae-66f40e06f715");
+        });
+    }
+
+    @Test
+    void testDeleteNonExistentProduct() {
+        assertThrows(NoSuchElementException.class, () -> {
+            productRepository.deleteById("non-existent-id");
+        });
+    }
+
+    @Test
+    void testDeleteFromEmptyRepository() {
+        assertThrows(NoSuchElementException.class, () -> {
+            productRepository.deleteById("eb558e9f-1c39-460e-8860-71af61af63bd6");
+        });
+    }
 }
