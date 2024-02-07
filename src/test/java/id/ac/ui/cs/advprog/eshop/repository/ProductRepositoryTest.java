@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +21,6 @@ class ProductRepositoryTest {
 
     @BeforeEach
     void setUp() {
-
     }
 
     @Test
@@ -66,5 +66,37 @@ class ProductRepositoryTest {
         savedProduct = productIterator.next();
         assertEquals(product2.getProductId(), savedProduct.getProductId());
         assertFalse(productIterator.hasNext());
+    }
+
+    @Test
+    void testEditProduct() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af61af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        Product editedProduct = new Product();
+        editedProduct.setProductId("eb558e9f-1c39-460e-8860-71af61af63bd6");
+        editedProduct.setProductName("New Product Name");
+        editedProduct.setProductQuantity(50);
+        productRepository.edit(editedProduct);
+
+        Product savedProduct = productRepository.findById("eb558e9f-1c39-460e-8860-71af61af63bd6");
+
+        assertEquals("New Product Name", savedProduct.getProductName());
+        assertEquals(50, savedProduct.getProductQuantity());
+    }
+
+    @Test
+    void testEditNonExistentProduct() {
+        Product editedProduct = new Product();
+        editedProduct.setProductId("non-existent-id");
+        editedProduct.setProductName("Edited Name");
+        editedProduct.setProductQuantity(10);
+
+        assertThrows(NoSuchElementException.class, () -> {
+            productRepository.edit(editedProduct);
+        });
     }
 }
