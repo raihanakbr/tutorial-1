@@ -22,11 +22,9 @@ public class ProductRepository {
     }
 
     public Product findById(String productId) {
-        for (Product product : productData) {
-            if (product.getProductId().equals(productId)) {
+        for (Product product : productData)
+            if (product.getProductId().equals(productId))
                 return product;
-            }
-        }
         throw new NoSuchElementException("Product not found with ID: " + productId);
     }
 
