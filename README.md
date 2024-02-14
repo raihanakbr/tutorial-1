@@ -1,3 +1,17 @@
+## Tutorial 2
+
+### Reflection 2
+1. There are several code issues that I've fixed such as:
+   1. "The instance method name 'HomePage' doesn't match '[a-z][a-zA-Z0-9]*'" \
+      **Solution**: rename to homePage
+   2. "Unnecessary ‘public’ Modifier" \
+      **Solution**: Change to either 'private' or 'protected'
+   3. "Use Constructor Injection Instead" \
+      **Solution**: Change from `@Autowired` to a Constructor
+
+
+2. In my current setup, I've established efficient Continuous Integration (CI). Each push or pull request activates my CI workflow, providing a rapid evaluation of my code with tests to identify any issues. It ensures the continued compatibility and functionality of the codebase. For Continuous Deployment (CD), I rely on Koyeb, which automates deployment following pulls, pushes, or merges from the repository.
+
 ## Tutorial 1
 
 ### Reflection 1
