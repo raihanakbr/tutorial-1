@@ -13,13 +13,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = HomePageController.class)
 @AutoConfigureMockMvc
-public class HomePageControllerTest {
+class HomePageControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void testHomePage() throws Exception {
+    void testHomePage() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("homePage"));
