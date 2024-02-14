@@ -132,4 +132,29 @@ class ProductRepositoryTest {
             productRepository.deleteById("eb558e9f-1c39-460e-8860-71af61af63bd6");
         });
     }
+
+    @Test
+    void testFindByIdFound() {
+        Product product = new Product();
+        product.setProductId("3f90c1db-afea-4a03-8dae-66f40e06f715");
+        product.setProductName("Soap By Kadal");
+        product.setProductQuantity(420);
+        productRepository.create(product);
+
+        Product findProduct = productRepository.findById("3f90c1db-afea-4a03-8dae-66f40e06f715");
+        assertEquals(product, findProduct);
+    }
+
+    @Test
+    void testFindByIdNotFound() {
+        Product product = new Product();
+        product.setProductId("3f90c1db-afea-4a03-8dae-66f40e06f715");
+        product.setProductName("Soap By Kadal");
+        product.setProductQuantity(420);
+        productRepository.create(product);
+
+        assertThrows(NoSuchElementException.class, () -> {
+            productRepository.findById("eb558e9f-1c39-460e-8860-71af61af63bd6");
+        });
+    }
 }
