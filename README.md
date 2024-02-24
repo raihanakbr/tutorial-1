@@ -1,6 +1,20 @@
+## Tutorial 3
+
+### Reflection
+1. I've applied several principles such as:
+   1. **Single Responsibility Principle**: Moved the CarController class from ProductController.java file to its own file and removed the "extends ProductController" because CarController should not inherit ProductController's mapping methods.
+   2. **Liskov Substitution Principle**: Currently, there are no classes that use the same method and the same return type. So, this project doesn't violate this principle.
+   3. **Interface Segregation Principle**: Because we separate CarService and ProductService, services that implement them only require one of them and not both. This makes each class that implements their respective service implement it correctly instead of just returning null or throwing an unimplemented exception.
+   4. **Dependency Inversion Principle**:
+      In this project, the dependencies within the product controller and car controller classes are focused on interfaces rather than concrete implementations. Instead of relying directly on specific implementations like CarServiceImpl and ProductServiceImpl, these classes are designed to depend on interfaces such as Car Service and Product Service.
+
+2. By implementing SOLID principles, our codebase will be more structured, maintainable, clean, and readable. For example, imagine a situation where a new bug has just been discovered in the codebase. If we don't adhere to the Single Responsibility Principle, we are likely to spend a lot of time just trying to figure out which class the bug originated from because our classes are tightly coupled to each other. However, if we apply SRP, we will be able to quickly identify the source of the bug as we have structured our classes in such a way that each class has only one responsibility.
+
+3. If we do not adhere to SOLID principles, our codebase will be more difficult to maintain. One example is as mentioned above. For another example, if we do not apply the Interface Segregation Principle, people who want to use our interface will be burdened because now they have to implement methods that they actually do not need.
+
 ## Tutorial 2
 
-### Reflection 2
+### Reflection
 1. There are several code issues that I've fixed such as:
    1. "The instance method name 'HomePage' doesn't match '[a-z][a-zA-Z0-9]*'" \
       **Solution**: rename to homePage
