@@ -1,3 +1,11 @@
+## Tutorial 4
+
+### Reflection
+
+1. In my opinion, the TDD procedure is highly beneficial as it can enhance correctness, maintainability, and workflow efficiency. Initially, I struggled with designing tests before starting to develop the actual class, but then I realized that TDD facilitates the creation of safer code and simplifies the refactoring process because changes can be tested immediately. Additionally, it is important to develop tests that evaluate interactions among features to further ensure code accuracy. For example, by testing the creation, updating, and deletion of multiple products simultaneously. This will enhance security and ensure that all components interact properly.
+
+2. In my opinion, the tests I have created adhere to the F.I.R.S.T principle because I have designed efficient tests to evaluate the code comprehensively. Each test performs assertion checks to verify the accuracy of the output and is designed to be repeatable, allowing consistent testing whenever there are modifications to the code. My tests also cover all the happy paths and unhappy paths, as well as all possible errors and outcomes.
+
 ## Tutorial 3
 
 ### Reflection
